@@ -1,9 +1,19 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "c_sharp", "go" })
-    end,
+    opts = {
+      ensure_installed = {
+        "bash",
+        "vimdoc",
+        "vim",
+        "yaml",
+        "lua",
+        "json",
+        "markdown",
+        "c_sharp",
+        "go",
+      },
+    },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
 
