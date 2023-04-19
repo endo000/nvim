@@ -4,10 +4,6 @@ return {
     dependencies = {
       "xolox/vim-misc",
     },
-    config = function()
-      vim.g["notes_directories"] = { "C:/dev/notes" }
-      vim.g["notes_shadowdir"] = "C:/dev/notes/shadow"
-    end,
     keys = {
       {
         "<leader>n",
