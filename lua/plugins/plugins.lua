@@ -25,6 +25,8 @@ return {
   -- Test
   { "vim-test/vim-test" },
 
+  { "neovim/nvim-lspconfig", opts = { autoformat = false } },
+
   {
     "nvim-telescope/telescope.nvim",
     opts = {

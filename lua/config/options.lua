@@ -4,8 +4,10 @@
 --
 
 -- Notes
-vim.g.notes_directories = { "C:/dev/notes" }
-vim.g.notes_shadowdir = "C:/dev/notes/shadow"
+-- vim.g.notes_directories = { "C:/dev/notes" }
+-- vim.g.notes_shadowdir = "C:/dev/notes/shadow"
+vim.g.notes_directories = { "/home/aleksandr/dev/notes" }
+vim.g.notes_shadowdir = "/home/aleksandr/dev/notes/shadow"
 
 -- Everforest theme
 vim.g.everforest_background = "hard"
