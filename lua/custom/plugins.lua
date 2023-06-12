@@ -56,6 +56,18 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "williamboman/mason-lspconfig.nvim",
+        config = true,
+      },
+      {
+        "jose-elias-alvarez/null-ls.nvim",
+        opts = function()
+          return require("custom.configs.null-ls")
+        end
+      },
+    },
     config = function()
       require("plugins.configs.lspconfig")
       require("custom.configs.lspconfig")
@@ -63,24 +75,8 @@ local plugins = {
   },
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "gopls",
-        "csharp-language-server"
-      }
-    },
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = "VeryLazy",
-    config = true,
-  },
-
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = "go",
     opts = function()
-      return require("custom.configs.null-ls")
+      return require("custom.configs.mason")
     end
   },
 
@@ -113,18 +109,65 @@ local plugins = {
 
   {
     "mfussenegger/nvim-dap",
+    ft = 'dart',
+    config = function()
+      -- local dap = require('dap')
+      -- dap.adapters.dart = {
+      --   type = "executable",
+      --   command = "node",
+      --   args = { "/home/aleksandr/dev/Dart-Code/out/dist/debug.js", "flutter" }
+      -- }
+      -- dap.configurations.dart = {
+      --   {
+      --     type = "dart",
+      --     request = "launch",
+      --     name = "Launch flutter",
+      --     dartSdkPath = "/home/aleksandr/fvm/version/2.5.3/bin/cache/dart-sdk/",
+      --     flutterSdkPath = "/home/aleksandr/fvm/versions/2.5.3/",
+      --     program = "${workspaceFolder}/lib/main.dart",
+      --     cwd = "${workspaceFolder}",
+      --   }
+      -- }
+    end
+  },
+
+  {
+    "leoluz/nvim-dap-go",
+    ft = "go",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+    opts = {
+      dap_configurations = {
+        {
+          type = "go",
+          name = "cico-backend",
+          args = { "serve" },
+          program = "/home/aleksandr/dev/cico-backend",
+          request = "launch",
+        },
+      },
+    },
+    init = function()
+      require("core.utils").load_mappings("dap_go")
+    end,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+    config = function(_, opts)
+      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      require("dap-python").setup(path)
+    end
+  },
+  {
+    "mfussenegger/nvim-dap",
     dependencies = {
       {
         "rcarriga/nvim-dap-ui",
-        config = true,
-      },
-      {
-        "leoluz/nvim-dap-go",
-        ft = "go",
-        -- dependencies = "mfussenegger/nvim-dap",
-        init = function()
-          require("core.utils").load_mappings("dap_go")
-        end,
         config = true,
       },
     },
