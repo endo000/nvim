@@ -13,7 +13,6 @@ M.tmux_navigator = {
 
 M.telescope = {
   n = {
-    -- "<cmd> Telescope diagnostics bufnr=0 <CR>",
     ["<leader>sd"] = {
       function()
         require('telescope.builtin').diagnostics({ bufnr = 0 })
@@ -41,13 +40,19 @@ M.general = {
   }
 }
 
--- M.lspconfig = {
---   plugin = true,
---
---   n = {
---     ["gr"] = ""
---   }
--- }
+M.lspconfig = {
+  plugin = true,
+
+  n = {
+    ["ld"] = {
+      function ()
+        vim.diagnostic.show()
+      end,
+      "show diagnostic",
+    }
+
+  }
+}
 
 M.dap = {
   plugin = true,

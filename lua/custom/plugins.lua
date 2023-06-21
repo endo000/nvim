@@ -41,7 +41,6 @@ local plugins = {
     build = ":Copilot auth",
     cmd = "Copilot",
     event = "InsertEnter",
-    enabled = true,
     opts = {
       suggestion = {
         enabled = false,
@@ -102,7 +101,9 @@ local plugins = {
     opts = {
       ensure_installed = {
         "go",
-        "dart"
+        "dart",
+        "javascript",
+        "python",
       }
     }
   },

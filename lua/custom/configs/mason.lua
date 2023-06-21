@@ -15,6 +15,11 @@ local opts = {
     "docker-compose-language-service",
     "dockerfile-language-server",
     "hadolint",
+    "eslint-lsp",
+    "deno",
+    "quick-lint-js",
+    "xo",
+    "vue-language-server",
   }
 }
 
