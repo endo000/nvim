@@ -20,6 +20,7 @@ local opts = {
     "quick-lint-js",
     "xo",
     "vue-language-server",
+    "jdtls",
   }
 }
 

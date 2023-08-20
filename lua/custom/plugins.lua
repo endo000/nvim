@@ -104,6 +104,7 @@ local plugins = {
         "dart",
         "javascript",
         "python",
+        "java",
       }
     }
   },
@@ -112,24 +113,32 @@ local plugins = {
     "mfussenegger/nvim-dap",
     ft = 'dart',
     config = function()
-      -- local dap = require('dap')
-      -- dap.adapters.dart = {
-      --   type = "executable",
-      --   command = "node",
-      --   args = { "/home/aleksandr/dev/Dart-Code/out/dist/debug.js", "flutter" }
-      -- }
-      -- dap.configurations.dart = {
-      --   {
-      --     type = "dart",
-      --     request = "launch",
-      --     name = "Launch flutter",
-      --     dartSdkPath = "/home/aleksandr/fvm/version/2.5.3/bin/cache/dart-sdk/",
-      --     flutterSdkPath = "/home/aleksandr/fvm/versions/2.5.3/",
-      --     program = "${workspaceFolder}/lib/main.dart",
-      --     cwd = "${workspaceFolder}",
-      --   }
-      -- }
+      local dap = require('dap')
+      dap.adapters.dart = {
+        type = "executable",
+        command = "/home/aleksandr/fvm/versions/3.3.10/bin/flutter",
+        args = { "debug-adapter", "--test"}
+      }
+      dap.configurations.dart = {
+        {
+          cwd = "/home/aleksandr/dev/coci-admin-panel-flutter",
+          dartSdkPath = "/home/aleksandr/fvm/versions/3.3.10/bin/cache/dart-sdk",
+          flutterSdkPath = "/home/aleksandr/fvm/versions/3.3.10",
+          name = "Launch current file",
+          program = "${file}",
+          request = "launch",
+          type = "dart"
+        }
+      }
     end
+  },
+
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = "java",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
   },
 
   {
@@ -145,6 +154,14 @@ local plugins = {
           name = "cico-backend",
           args = { "serve" },
           program = "/home/aleksandr/dev/cico-backend",
+          request = "launch",
+        },
+        {
+          type = "go",
+          name = "coci2-backend pdf",
+          args = { "worker:pdf" },
+          program = "/home/aleksandr/dev/coci-backend2/src/cmd/pdf/",
+          cwd = "/home/aleksandr/dev/coci-backend2/src/",
           request = "launch",
         },
       },
@@ -201,7 +218,11 @@ local plugins = {
   {
     "elkowar/yuck.vim",
     ft = "yuck",
-  }
+  },
+  {
+    "goerz/jupytext.vim",
+    ft = "json",
+  },
 }
 
 return plugins

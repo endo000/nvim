@@ -44,13 +44,20 @@ M.lspconfig = {
   plugin = true,
 
   n = {
-    ["ld"] = {
-      function ()
+    ["<leader>ld"] = {
+      function()
         vim.diagnostic.show()
       end,
       "show diagnostic",
     }
-
+  },
+  v = {
+    ["<leader>fm"] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      "lsp formatting",
+    }
   }
 }
 
