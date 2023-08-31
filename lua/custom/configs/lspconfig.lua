@@ -41,7 +41,6 @@ local util = require("lspconfig/util")
 
 require('mason-lspconfig').setup_handlers({
   function(server)
-    print(server)
     lspconfig[server].setup({
       on_attach = on_attach,
       capabilities = capabilities,

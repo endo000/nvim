@@ -24,7 +24,7 @@ local opts = {
     -- code_actions.xo,
     -- diagnostics.xo,
     -- formatting.xo,
-    formatting.demo_fmt,
+    -- formatting.demo_fmt,
   }
 }
 return opts

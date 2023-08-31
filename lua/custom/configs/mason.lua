@@ -21,6 +21,7 @@ local opts = {
     "xo",
     "vue-language-server",
     "jdtls",
+    "rnix-lsp",
   }
 }
 
