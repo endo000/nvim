@@ -37,7 +37,10 @@ M.telescope = {
 M.general = {
   n = {
     ["tw"] = { "<cmd> set wrap! <CR>", "toggle wrap" }
-  }
+  },
+  i = {
+    ["#"] = { "X<c-h>#", "fix indentation for # sign"}
+  },
 }
 
 M.lspconfig = {
