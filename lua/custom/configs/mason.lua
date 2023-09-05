@@ -2,6 +2,7 @@ local opts = {
   ensure_installed = {
     "gopls",
     "delve",
+    "lua-language-server",
     "csharp-language-server",
     "bash-language-server",
     "shellcheck",

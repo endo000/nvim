@@ -1,8 +1,8 @@
 ---@type ChadrcConfig
 local M = {}
 M.ui = {
-  theme = 'nightfox',
-  transparency = true,
+  theme = 'everblush',
+  transparency = false,
   nvdash = {
     load_on_startup = true,
   }
