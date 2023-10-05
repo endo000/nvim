@@ -25,6 +25,15 @@ local opts = {
     -- diagnostics.xo,
     -- formatting.xo,
     -- formatting.demo_fmt,
+    diagnostics.buf,
+    formatting.buf,
+    diagnostics.sqlfluff.with({
+        extra_args = { "--dialect", "postgres" }, -- change to your dialect
+    }),
+    formatting.sqlfluff.with({
+        extra_args = { "--dialect", "postgres" }, -- change to your dialect
+    }),
+    diagnostics.checkmake,
   }
 }
 return opts

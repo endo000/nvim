@@ -25,6 +25,12 @@ local plugins = {
     event = { "BufReadPost", "BufNewFile" },
   },
   {
+    "folke/todo-comments.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     opts = {
       git = { enable = true },
@@ -54,17 +60,28 @@ local plugins = {
   },
 
   {
+    "jose-elias-alvarez/null-ls.nvim",
+    ft = {
+      "go",
+      "bash",
+      "sh",
+      "zsh",
+      "sql",
+      "make",
+      "proto",
+    },
+    opts = function()
+      require("core.utils").load_mappings("lspconfig")
+      return require("custom.configs.null-ls")
+    end
+  },
+
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       {
         "williamboman/mason-lspconfig.nvim",
         config = true,
-      },
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        opts = function()
-          return require("custom.configs.null-ls")
-        end
       },
     },
     config = function()
@@ -105,6 +122,7 @@ local plugins = {
         "javascript",
         "python",
         "java",
+        "sql",
       }
     }
   },
@@ -114,22 +132,22 @@ local plugins = {
     ft = 'dart',
     config = function()
       local dap = require('dap')
-      dap.adapters.dart = {
-        type = "executable",
-        command = "/home/aleksandr/fvm/versions/3.3.10/bin/flutter",
-        args = { "debug-adapter", "--test"}
-      }
-      dap.configurations.dart = {
-        {
-          cwd = "/home/aleksandr/dev/coci-admin-panel-flutter",
-          dartSdkPath = "/home/aleksandr/fvm/versions/3.3.10/bin/cache/dart-sdk",
-          flutterSdkPath = "/home/aleksandr/fvm/versions/3.3.10",
-          name = "Launch current file",
-          program = "${file}",
-          request = "launch",
-          type = "dart"
-        }
-      }
+      -- dap.adapters.dart = {
+      -- type = "executable",
+      -- command = "/home/aleksandr/fvm/versions/3.3.10/bin/flutter",
+      -- args = { "debug-adapter", "--test"}
+      -- }
+      -- dap.configurations.dart = {
+      -- {
+      -- cwd = "/home/aleksandr/dev/coci-admin-panel-flutter",
+      -- dartSdkPath = "/home/aleksandr/fvm/versions/3.3.10/bin/cache/dart-sdk",
+      -- flutterSdkPath = "/home/aleksandr/fvm/versions/3.3.10",
+      -- name = "Launch current file",
+      -- program = "${file}",
+      -- request = "launch",
+      -- type = "dart"
+      -- }
+      -- }
     end
   },
 
@@ -183,7 +201,7 @@ local plugins = {
       "mfussenegger/nvim-dap",
     },
     config = function(_, opts)
-      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      local path = "/usr/bin/python"
       require("dap-python").setup(path)
     end
   },
@@ -228,6 +246,18 @@ local plugins = {
   {
     "goerz/jupytext.vim",
     ft = "json",
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, opts)
+      opts.defaults.path_display = function(_, path)
+        local tail = require("telescope.utils").path_tail(path)
+        return string.format("%s (%s)", tail, path), { { { 1, #tail }, "Constant" } }
+      end
+
+      return opts
+    end,
   },
 }
 

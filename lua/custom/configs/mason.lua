@@ -1,6 +1,7 @@
 local opts = {
   ensure_installed = {
     "gopls",
+    "golines",
     "delve",
     "lua-language-server",
     "csharp-language-server",
@@ -23,6 +24,11 @@ local opts = {
     "vue-language-server",
     "jdtls",
     "rnix-lsp",
+    "protolint",
+    "buf",
+    "buf-language-server",
+    "sqlls",
+    "json-lsp"
   }
 }
 

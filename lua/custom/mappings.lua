@@ -34,12 +34,17 @@ M.telescope = {
   }
 }
 
+M.disabled = {
+  n = {
+    ["<C-c>"] = "",
+  }
+}
 M.general = {
   n = {
-    ["tw"] = { "<cmd> set wrap! <CR>", "toggle wrap" }
+    ["tw"] = { "<cmd> set wrap! <CR>", "toggle wrap" },
   },
   i = {
-    ["#"] = { "X<c-h>#", "fix indentation for # sign"}
+    ["#"] = { "X<c-h>#", "fix indentation for # sign"},
   },
 }
 
@@ -52,6 +57,12 @@ M.lspconfig = {
         vim.diagnostic.show()
       end,
       "show diagnostic",
+    },
+    ["<leader>fm"] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      "lsp formatting",
     }
   },
   v = {
@@ -60,7 +71,7 @@ M.lspconfig = {
         vim.lsp.buf.format { async = true }
       end,
       "lsp formatting",
-    }
+    },
   }
 }
 
