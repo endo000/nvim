@@ -171,14 +171,14 @@ local plugins = {
           type = "go",
           name = "cico-backend",
           args = { "serve" },
-          program = "/home/aleksandr/dev/cico-backend",
+          program = "/home/aleksandr/dev/result/cico-backend",
           request = "launch",
         },
         {
           type = "go",
           name = "coci2-backend pdf",
           args = { "worker:pdf" },
-          program = "/home/aleksandr/dev/coci-backend2/src/cmd/pdf/",
+          program = "/home/aleksandr/dev/result/coci-backend2/src/cmd/pdf/",
           request = "launch",
         },
         {

@@ -18,6 +18,7 @@ local opts = {
     "dockerfile-language-server",
     "hadolint",
     "eslint-lsp",
+    "typescript-language-server",
     "deno",
     "quick-lint-js",
     "xo",
@@ -28,7 +29,7 @@ local opts = {
     "buf",
     "buf-language-server",
     "sqlls",
-    "json-lsp"
+    "json-lsp",
   }
 }
 

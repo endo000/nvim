@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 M.ui = {
-  theme = 'ayu_dark',
+  theme = 'aquarium',
   transparency = false,
   nvdash = {
     load_on_startup = true,
