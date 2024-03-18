@@ -112,4 +112,24 @@ return {
 			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 		end,
 	},
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			plugins = {
+				tmux = { enabled = true }, -- disables the tmux statusline
+				kitty = {
+					enabled = true,
+					font = "+2", -- font size increment
+				},
+			},
+		},
+		config = function(_, opts)
+			require("zen-mode").setup(opts)
+			require("mappings").zenmode()
+		end,
+	},
+	{
+		"folke/twilight.nvim",
+		opts = {},
+	},
 }
