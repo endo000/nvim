@@ -9,6 +9,7 @@ return {
 			"MunifTanjim/nui.nvim",
 			"neovim/nvim-lspconfig",
 			"mfussenegger/nvim-dap",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			{
 				"williamboman/mason.nvim",
 				opts = {
@@ -30,17 +31,12 @@ return {
 		},
 	},
 	{
-		"bfredl/nvim-ipy",
+		"benlubas/molten-nvim",
+		build = ":UpdateRemotePlugins",
+		config = function() end,
 	},
 	{
-		"benlubas/molten-nvim",
-    build = ":UpdateRemotePlugins",
-		config = function()
-      
-    end,
+		"GCBallesteros/jupytext.nvim",
+		opts = {},
 	},
-  {
-    'GCBallesteros/jupytext.nvim',
-    opts = {},
-  }
 }

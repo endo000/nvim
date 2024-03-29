@@ -30,6 +30,16 @@ return {
 		end,
 	},
 	{
+		"jay-babu/mason-nvim-dap.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"mfussenegger/nvim-dap",
+		},
+		opts = {
+			handlers = {},
+		},
+	},
+	{
 		"theHamsta/nvim-dap-virtual-text",
 		dependencies = {
 			"mfussenegger/nvim-dap",

@@ -21,6 +21,14 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "Jenkinsfile",
+	group = vim.api.nvim_create_augroup("filetypedetect", {}),
+	callback = function()
+		vim.cmd("set filetype=groovy")
+	end,
+})
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({

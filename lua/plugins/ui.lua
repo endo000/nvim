@@ -22,8 +22,19 @@ return {
 	},
 	{
 		"stevearc/dressing.nvim",
+		dependencies = "nvim-telescope/telescope.nvim",
 		opts = {
-			insert_only = false,
+			input = {
+				insert_only = false,
+			},
+			select = {
+				-- backend = {},
+				telescope = require("telescope.themes").get_ivy({
+					layout_config = {
+						height = 10,
+					},
+				}),
+			},
 		},
 	},
 	{

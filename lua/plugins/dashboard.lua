@@ -100,9 +100,10 @@ return {
       },
       project = {
         icon = '📘',
+        enable = false,
       },
       mru = {
-        icon = '🔁',
+        enable = true,
       },
     },
   },

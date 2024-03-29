@@ -2,6 +2,7 @@ local ensure_installed = {
 	"lua_ls",
 	"stylua",
 	"gopls",
+	"delve",
 	"bashls",
 	"shfmt",
 	"dockerls",
@@ -9,7 +10,11 @@ local ensure_installed = {
 	"jsonls",
 	"jdtls",
 	"deno",
-	"pyright",
+	-- "pyright",
+	"pylsp",
+	"debugpy",
+	"clangd",
+	"codelldb",
 }
 
 return {
@@ -74,6 +79,19 @@ return {
 						require("java").setup()
 					end,
 				},
+
+				clangd = {
+					opts = {
+						cmd = {
+							"clangd",
+							"--offset-encoding=utf-16",
+						},
+					},
+				},
+
+				jsonls = {
+					enabled = false,
+				},
 			}
 
 			local mason_lspconfig = require("mason-lspconfig")
@@ -81,6 +99,10 @@ return {
 			mason_lspconfig.setup_handlers({
 				function(server_name)
 					local server = servers[server_name] or {}
+
+					if server.enabled == false then
+						return
+					end
 
 					if server.exec_before then
 						server.exec_before()

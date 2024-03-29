@@ -20,7 +20,7 @@ M.bufferline = function()
 	keymap({ keys = "]b", func = wrap(vim.cmd, "BufferLineCycleNext"), mapopts = { desc = "Next [b]uffer" } })
 	keymap({ keys = "[b", func = wrap(vim.cmd, "BufferLineCyclePrev"), mapopts = { desc = "Previous [b]uffer" } })
 	keymap({
-		keys = "<C-X>",
+		keys = "<Leader>x",
 		func = wrap(vim.api.nvim_buf_delete, 0, { force = true }),
 		mapopts = { desc = "[C]lose buffer" },
 	})
@@ -65,11 +65,20 @@ M.telescope = function()
 	local builtin = require("telescope.builtin")
 	keymap({ keys = "<leader>sh", func = builtin.help_tags, mapopts = { desc = "[S]earch [h]elp" } })
 	keymap({ keys = "<leader>sk", func = builtin.keymaps, mapopts = { desc = "[S]earch [k]eymaps" } })
-	keymap({ keys = "<leader>sf", func = builtin.find_files, mapopts = { desc = "[S]earch [f]iles" } })
+	keymap({
+		keys = "<leader>sf",
+		func = function()
+			builtin.find_files({ hidden = true })
+		end,
+		mapopts = { desc = "[S]earch [f]iles" },
+	})
 	keymap({
 		keys = "<leader>sc",
 		func = function()
-			builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
+			builtin.find_files({
+				cwd = vim.fn.expand("%:p:h"),
+				hidden = true,
+			})
 		end,
 		mapopts = { desc = "[S]earch Files [c]wd" },
 	})
@@ -109,10 +118,12 @@ M.telescope = function()
 	-- open file_browser with the path of the current buffer
 	keymap({
 		keys = "<leader>fb",
-		func = wrap(require("telescope").extensions.file_browser.file_browser, {
-			path = vim.fn.expand("%:p:h"),
-			select_buffer = true,
-		}),
+		func = function()
+			require("telescope").extensions.file_browser.file_browser({
+				path = vim.fn.expand("%:p:h"),
+				select_buffer = true,
+			})
+		end,
 		mapopts = { desc = "[F]ile [b]rowser" },
 	})
 end
