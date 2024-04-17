@@ -39,4 +39,8 @@ return {
 		"GCBallesteros/jupytext.nvim",
 		opts = {},
 	},
+	{
+		"leoluz/nvim-dap-go",
+		opts = {},
+	},
 }

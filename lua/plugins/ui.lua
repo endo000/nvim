@@ -76,6 +76,8 @@ return {
 					reveal = { "close" },
 				},
 				custom_filter = function(buf, buf_nums)
+					do return true end
+
 					if string.find(vim.fn.bufname(buf), "[dap-terminal]", 0, true) then
 						return false
 					end

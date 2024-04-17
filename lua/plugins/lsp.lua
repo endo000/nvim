@@ -15,6 +15,8 @@ local ensure_installed = {
 	"debugpy",
 	"clangd",
 	"codelldb",
+	"autotools_ls",
+	"rust-analyzer",
 }
 
 return {
@@ -91,6 +93,18 @@ return {
 
 				jsonls = {
 					enabled = false,
+				},
+
+				rust_analyzer = {
+					opts = {
+						settings = {
+							["rust-analyzer"] = {
+								cargo = {
+									allFeatures = true,
+								},
+							},
+						},
+					},
 				},
 			}
 
