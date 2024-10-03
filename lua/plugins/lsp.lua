@@ -2,21 +2,31 @@ local ensure_installed = {
 	"lua_ls",
 	"stylua",
 	"gopls",
+	"golines",
+	"gomodifytags",
 	"delve",
 	"bashls",
+	"shellcheck",
 	"shfmt",
+	"sql-formatter",
 	"dockerls",
 	"docker_compose_language_service",
 	"jsonls",
 	"jdtls",
 	"deno",
-	-- "pyright",
+	"pyright",
 	"pylsp",
 	"debugpy",
+	"isort",
+	"black",
 	"clangd",
 	"codelldb",
 	"autotools_ls",
 	"rust-analyzer",
+	"groovy-language-server",
+	"npm-groovy-lint",
+	"codespell",
+	"bufls",
 }
 
 return {
@@ -72,7 +82,7 @@ return {
 
 				docker_compose_language_service = {
 					opts = {
-						filetypes = { "Dockerfile", "dockerfile", "yaml" },
+						filetypes = { "yaml" },
 					},
 				},
 
@@ -88,11 +98,34 @@ return {
 							"clangd",
 							"--offset-encoding=utf-16",
 						},
+						filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 					},
 				},
 
 				jsonls = {
+					enabled = true,
+				},
+
+				pyright = {
 					enabled = false,
+				},
+
+				pylsp = {
+					opts = {
+						settings = {
+							pylsp = {
+								plugins = {
+									flake8 = {
+										maxLineLength = 88,
+									},
+									pycodestyle = {
+										maxLineLength = 88,
+										ignore = { "E203" },
+									},
+								},
+							},
+						},
+					},
 				},
 
 				rust_analyzer = {
@@ -127,6 +160,21 @@ return {
 					lspconfig[server_name].setup(opts)
 				end,
 			})
+		end,
+	},
+	{
+		"nvimtools/none-ls.nvim",
+		opts = function(_, opts)
+			local null_ls = require("null-ls")
+			return {
+				debug = true,
+				sources = {
+					null_ls.builtins.code_actions.gomodifytags,
+					null_ls.builtins.formatting.sql_formatter,
+					-- null_ls.builtins.diagnostics.npm_groovy_lint,
+					-- null_ls.builtins.formatting.npm_groovy_lint,
+				},
+			}
 		end,
 	},
 	{
@@ -249,9 +297,16 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				sh = { "shfmt" },
-				-- python = { "isort", "black" },
+				go = { "gofmt", "golines" },
+				python = { "isort", "black" },
 				-- javascript = { { "prettierd", "prettier" } },
 			},
+			formatters = {
+				black = {
+					prepend_args = { "--fast" },
+				},
+			},
+			-- log_level = vim.log.levels.DEBUG,
 		},
 		config = function(_, opts)
 			require("conform").setup(opts)

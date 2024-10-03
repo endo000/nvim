@@ -76,7 +76,9 @@ return {
 					reveal = { "close" },
 				},
 				custom_filter = function(buf, buf_nums)
-					do return true end
+					do
+						return true
+					end
 
 					if string.find(vim.fn.bufname(buf), "[dap-terminal]", 0, true) then
 						return false
@@ -145,4 +147,11 @@ return {
 		"folke/twilight.nvim",
 		opts = {},
 	},
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	main = "ibl",
+	-- 	---@module "ibl"
+	-- 	---@type ibl.config
+	-- 	opts = {},
+	-- },
 }

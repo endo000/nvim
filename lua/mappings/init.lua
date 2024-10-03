@@ -190,7 +190,8 @@ M.lsp = function(event)
 	})
 	keymap({
 		keys = "gd",
-		func = telescope.lsp_definitions,
+		-- func = telescope.lsp_definitions,
+		func = vim.lsp.buf.definition,
 		mapopts = { desc = "[G]oto [D]efinition", buffer = event.buf },
 	})
 	keymap({
@@ -240,7 +241,7 @@ M.conform = function()
 	keymap({
 		mode = { "n", "v" },
 		keys = "<Leader>fm",
-		func = wrap(conform.format, { lsp_fallback = true }),
+		func = wrap(conform.format, { async = true, lsp_fallback = true }),
 		mapopts = { desc = "[F]or[m]at" },
 	})
 end

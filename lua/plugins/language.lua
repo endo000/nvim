@@ -6,6 +6,7 @@ return {
 			"nvim-java/nvim-java-core",
 			"nvim-java/nvim-java-test",
 			"nvim-java/nvim-java-dap",
+			"nvim-java/nvim-java-refactor",
 			"MunifTanjim/nui.nvim",
 			"neovim/nvim-lspconfig",
 			"mfussenegger/nvim-dap",
@@ -25,6 +26,9 @@ return {
 		"akinsho/flutter-tools.nvim",
 		opts = {
 			fvm = true,
+			closing_tags = {
+				enabled = false,
+			},
 			debugger = {
 				enabled = true,
 			},
