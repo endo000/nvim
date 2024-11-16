@@ -7,14 +7,32 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   -- import/override with your plugins folder
-  -- { import = "astrocommunity.pack.java" },
+  { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.lsp.nvim-java" },
   { import = "astrocommunity.pack.dart" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.sql" },
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.bash" },
+  { import = "astrocommunity.pack.json" },
+
+  { import = "astrocommunity.editing-support.suda-vim" },
+  { import = "astrocommunity.editing-support.cloak-nvim" },
+  { import = "astrocommunity.note-taking.obsidian-nvim" },
+
   { import = "astrocommunity.recipes.vscode" },
+  { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
+
+  -- { import = "astrocommunity.scrolling.neoscroll-nvim" },
+  { import = "astrocommunity.scrolling.vim-smoothie" },
+  { import = "astrocommunity.scrolling.nvim-scrollbar" },
+
+  -- { import = "astrocommunity.motion.mini-surround" },
+  { import = "astrocommunity.motion.nvim-surround" },
+
+  { import = "astrocommunity.completion.copilot-cmp" },
 
   { import = "astrocommunity.colorscheme.aurora" },
   { import = "astrocommunity.colorscheme.bamboo-nvim" },
