@@ -18,12 +18,16 @@ return {
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.json" },
 
+  { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.split-and-window.windows-nvim" },
+
   { import = "astrocommunity.editing-support.suda-vim" },
   { import = "astrocommunity.editing-support.cloak-nvim" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
 
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.recipes.heirline-mode-text-statusline" },
+  { import = "astrocommunity.recipes.telescope-lsp-mappings" },
 
   -- { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.scrolling.vim-smoothie" },

@@ -15,5 +15,14 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+local group = vim.api.nvim_create_augroup("__env", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = ".env",
+  group = group,
+  callback = function(args)
+    vim.diagnostic.disable(args.buf) -- Disable diagnostics for `.env` files
+  end,
+})
+
 require "lazy_setup"
 require "polish"
